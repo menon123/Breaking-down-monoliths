@@ -1,0 +1,79 @@
+version: '3.7'
+services:
+  landing-service:
+    build: ./landing
+    ports:
+      - "5050:5050"
+    depends_on:
+      - addition
+      - subtraction
+      - multiplication
+      - division
+      - modulus
+      - gcd
+    networks:
+      - arithmetic_network
+    restart: always
+    environment:
+      FLASK_APP: /app/app.py
+      FLASK_ENV: development
+
+  addition:
+    build: ./addition
+    ports:
+      - "5051:5050"
+    networks:
+      - arithmetic_network
+    restart: always
+
+  subtraction:
+    build: ./subtraction
+    ports:
+      - "5052:5050"
+    networks:
+      - arithmetic_network
+    restart: always
+
+  multiplication:
+    build: ./multiplication
+    ports:
+      - "5053:5050"
+    networks:
+      - arithmetic_network
+    restart: always
+
+  division:
+    build: ./division
+    ports:
+      - "5054:5050"
+    networks:
+      - arithmetic_network
+    restart: always
+  
+  modulus:
+    build: ./modulus
+    ports:
+      - "5055:5050"
+    networks:
+      - arithmetic_network
+    restart: always
+
+  exponent:
+    build: ./exponent
+    ports:
+      - "5056:5050"
+    networks:
+      - arithmetic_network
+    restart: always
+  
+  gcd:
+    build: ./gcd
+    ports:
+      - "5057:5050"
+    networks:
+      - arithmetic_network
+    restart: always
+  
+
+networks:
+  arithmetic_network:
